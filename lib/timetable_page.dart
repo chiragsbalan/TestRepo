@@ -9,8 +9,8 @@ class TimetablePage extends StatefulWidget {
 class _TimetablePageState extends State<TimetablePage> {
   final Map<String, List<String>> timetable = {
     'Monday': [
-      'Mobile Applications Lab - BSc. Lab',
-      'Mobile Applications Lab - BSc. Lab',
+      'Mobile Applications Lab (Practical)',
+      'Mobile Applications Lab (Practical)',
       'BREAK',
       'Cyber Security',
       'Business Intelligence',
@@ -18,8 +18,8 @@ class _TimetablePageState extends State<TimetablePage> {
       'Library'
     ],
     'Tuesday': [
-      'Business Intelligence Lab - BSc. Lab',
-      'Business Intelligence Lab - BSc. Lab',
+      'Business Intelligence Lab',
+      'Business Intelligence Lab',
       'BREAK',
       'Mobile Applications',
       'Computer Networks',
@@ -27,8 +27,8 @@ class _TimetablePageState extends State<TimetablePage> {
       'Project'
     ],
     'Wednesday': [
-      'MA Lab - Class',
-      'MA Lab - Class',
+      'Mobile Applications Lab (Theory)',
+      'Mobile Applications Lab (Theory)',
       'BREAK',
       'Cyber Security',
       'Business Intelligence',
@@ -36,8 +36,8 @@ class _TimetablePageState extends State<TimetablePage> {
       'Cyber Security'
     ],
     'Thursday': [
-      'Business Intelligence Lab - BSc. Lab',
-      'Business Intelligence Lab - BSc. Lab',
+      'Business Intelligence Lab',
+      'Business Intelligence Lab',
       'BREAK',
       'Cyber Security',
       'Business Intelligence',
@@ -53,12 +53,7 @@ class _TimetablePageState extends State<TimetablePage> {
       'Library',
       'Library'
     ],
-    'Saturday': [
-      'Project Lab',
-      'Project Lab',
-      'Cyber Security',
-      'Computer Networks'
-    ]
+    'Saturday': ['Project', 'Project', 'Cyber Security', 'Computer Networks']
   };
 
   final Map<String, List<String>> timings = {
@@ -80,25 +75,30 @@ class _TimetablePageState extends State<TimetablePage> {
   };
 
   final Map<String, Map<String, String>> details = {
-    'Mobile Applications Lab - BSc. Lab': {
+    'Mobile Applications Lab (Practical)': {
       'teacher': 'Dr. Manasa Kulkarni',
-      'block': '2nd Block',
-      'room': 'B101'
+      'block': 'Block 2',
+      'room': 'BSc. Lab'
+    },
+    'Mobile Applications Lab (Theory)': {
+      'teacher': 'Dr. Manasa Kulkarni',
+      'block': 'Block 2',
+      'room': '707'
     },
     'Cyber Security': {
       'teacher': 'Dr. Chanty S',
-      'block': '2nd Block',
-      'room': 'C202'
+      'block': 'Block 2',
+      'room': '707'
     },
     'Business Intelligence': {
       'teacher': 'Dr. Newbegin Luke',
-      'block': '2nd Block',
-      'room': 'D303'
+      'block': 'Block 2',
+      'room': '707'
     },
     'Computer Networks': {
       'teacher': 'Dr. Smitha Vinod',
-      'block': '2nd Block',
-      'room': 'E404'
+      'block': 'Block 2',
+      'room': '707'
     },
     'Library': {
       'teacher': 'N/A',
@@ -107,34 +107,29 @@ class _TimetablePageState extends State<TimetablePage> {
     },
     'Project Lab': {
       'teacher': 'Dr. Kirubanand V',
-      'block': '2nd Block',
-      'room': 'Lab 1'
-    },
-    'MA Lab - Class': {
-      'teacher': 'Dr. Manasa Kulkarni',
-      'block': '2nd Block',
-      'room': 'F505'
+      'block': 'Block 2',
+      'room': '707'
     },
     'Activity Hour': {
       'teacher': 'Dr. Newbegin Luke',
-      'block': '2nd Block',
-      'room': 'G606'
+      'block': 'Block 2',
+      'room': '707'
     },
     'Project': {
       'teacher': 'Dr. Kirubanand V',
-      'block': '2nd Block',
-      'room': 'H707'
+      'block': 'Block 2',
+      'room': '707'
     },
     'BREAK': {'teacher': 'N/A', 'block': 'N/A', 'room': 'N/A'},
     'Mobile Applications': {
       'teacher': 'Dr. Manasa Kulkarni',
-      'block': '2nd Block',
-      'room': 'I808'
+      'block': 'Block 2',
+      'room': '707'
     },
-    'Business Intelligence Lab - BSc. Lab': {
+    'Business Intelligence Lab': {
       'teacher': 'Dr. Newbegin Luke',
       'block': '2nd Block',
-      'room': 'J909'
+      'room': 'BSc. Lab'
     },
   };
 

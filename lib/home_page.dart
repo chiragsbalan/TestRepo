@@ -64,8 +64,8 @@ class _HomePageState extends State<HomePage> {
 
   final Map<String, List<String>> timetable = {
     'Monday': [
-      'Mobile Applications Lab - BSc. Lab',
-      'Mobile Applications Lab - BSc. Lab',
+      'Mobile Applications Lab (Practical)',
+      'Mobile Applications Lab (Practical)',
       'BREAK',
       'Cyber Security',
       'Business Intelligence',
@@ -73,8 +73,8 @@ class _HomePageState extends State<HomePage> {
       'Library'
     ],
     'Tuesday': [
-      'Business Intelligence Lab - BSc. Lab',
-      'Business Intelligence Lab - BSc. Lab',
+      'Business Intelligence Lab',
+      'Business Intelligence Lab',
       'BREAK',
       'Mobile Applications',
       'Computer Networks',
@@ -82,8 +82,8 @@ class _HomePageState extends State<HomePage> {
       'Project'
     ],
     'Wednesday': [
-      'MA Lab - Class',
-      'MA Lab - Class',
+      'Mobile Applications Lab (Theory)',
+      'Mobile Applications Lab (Theory)',
       'BREAK',
       'Cyber Security',
       'Business Intelligence',
@@ -91,8 +91,8 @@ class _HomePageState extends State<HomePage> {
       'Cyber Security'
     ],
     'Thursday': [
-      'Business Intelligence Lab - BSc. Lab',
-      'Business Intelligence Lab - BSc. Lab',
+      'Business Intelligence Lab',
+      'Business Intelligence Lab',
       'BREAK',
       'Cyber Security',
       'Business Intelligence',
@@ -108,7 +108,7 @@ class _HomePageState extends State<HomePage> {
       'Library',
       'Library'
     ],
-    'Saturday': ['Project Lab', 'Project Lab', 'BREAK', 'Computer Networks']
+    'Saturday': ['Project', 'Project', 'Cyber Security', 'Computer Networks']
   };
 
   final Map<String, List<String>> timings = {
@@ -128,6 +128,31 @@ class _HomePageState extends State<HomePage> {
       '11:00 - 12:00 PM'
     ]
   };
+
+  final List<Color> colors = [
+    Colors.blue,
+    Colors.green,
+    Colors.orange,
+    Colors.purple,
+    Colors.red,
+    Colors.teal,
+    Colors.pink,
+    Colors.yellow,
+    Colors.cyan,
+    Colors.indigo
+  ];
+
+  final Map<String, Color> subjectColors = {};
+
+  Color getSubjectColor(String subject) {
+    if (subjectColors.containsKey(subject)) {
+      return subjectColors[subject]!;
+    } else {
+      Color color = colors[subjectColors.length % colors.length];
+      subjectColors[subject] = color;
+      return color;
+    }
+  }
 
   double getAttendancePercentage() {
     // This function should return the actual attendance percentage.
@@ -384,7 +409,7 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 8.0),
                   Container(
                     height:
-                        140.0, // Fixed height for scrollable container to show 3 alerts
+                        160.0, // Fixed height for scrollable container to show 3 alerts
                     padding: const EdgeInsets.all(8.0),
                     decoration: BoxDecoration(
                       color: Colors.grey[900], // Dark grey for widgets
@@ -398,41 +423,48 @@ class _HomePageState extends State<HomePage> {
                           children: alerts.map((alert) {
                             return Padding(
                               padding:
-                                  const EdgeInsets.symmetric(vertical: 8.0),
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.notification_important,
-                                    color: Colors.white,
-                                  ),
-                                  const SizedBox(width: 8.0),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          alert['title']!,
-                                          style: TextStyle(
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.w500,
-                                            fontFamily: 'NotoSans',
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        const SizedBox(height: 4.0),
-                                        Text(
-                                          alert['description']!,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'NotoSans',
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ],
+                                  const EdgeInsets.symmetric(vertical: 4.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[850],
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.notification_important,
+                                      color: Colors.white,
                                     ),
-                                  ),
-                                ],
+                                    const SizedBox(width: 8.0),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            alert['title']!,
+                                            style: TextStyle(
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.w500,
+                                              fontFamily: 'NotoSans',
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 4.0),
+                                          Text(
+                                            alert['description']!,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontFamily: 'NotoSans',
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           }).toList(),
@@ -498,7 +530,9 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: _getTimeContainerColor(timing),
+                                      color: session == 'BREAK'
+                                          ? Colors.grey[800]
+                                          : getSubjectColor(session),
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     padding: const EdgeInsets.symmetric(
@@ -650,25 +684,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-  }
-
-  Color _getTimeContainerColor(String time) {
-    if (time.contains('7:30')) {
-      return Colors.blue;
-    } else if (time.contains('8:30') || time.contains('8:00')) {
-      return Colors.green;
-    } else if (time.contains('9:00') || time.contains('9:00')) {
-      return Colors.orange;
-    } else if (time.contains('9:30') || time.contains('10:00')) {
-      return Colors.purple;
-    } else if (time.contains('10:30') || time.contains('11:00')) {
-      return Colors.red;
-    } else if (time.contains('11:30')) {
-      return Colors.teal;
-    } else if (time.contains('12:30')) {
-      return Colors.pink;
-    } else {
-      return Colors.grey;
-    }
   }
 }

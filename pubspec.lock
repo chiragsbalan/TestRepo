@@ -488,21 +488,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
-  package_info_plus_platform_interface:
-    dependency: transitive
-    description:
-      name: package_info_plus_platform_interface
-      sha256: f7a0c8f1e7e981bc65f8b64137a53fd3c195b18d429fba960babc59a5a1c7ae8
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.2"
-  package_info_plus_windows:
-    dependency: "direct main"
-    description:
-      path: "local_packages/package_info_plus_windows"
-      relative: true
-    source: path
-    version: "2.1.0"
   path:
     dependency: transitive
     description:
@@ -708,14 +693,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.1"
-  win32:
-    dependency: transitive
-    description:
-      name: win32
-      sha256: a6f0236dbda0f63aa9a25ad1ff9a9d8a4eaaa5012da0dc59d21afdb1dc361ca4
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.4"
   xdg_directories:
     dependency: transitive
     description:
